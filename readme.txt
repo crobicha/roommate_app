@@ -1,0 +1,1 @@
+Use the roommate_app/android_client/dev directory as your eclipse workspace
