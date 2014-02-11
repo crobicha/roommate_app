@@ -1,0 +1,1 @@
+Use this directory as your eclipse workspace
