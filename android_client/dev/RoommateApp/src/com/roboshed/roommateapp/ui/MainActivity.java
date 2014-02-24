@@ -1,9 +1,15 @@
-package com.roboshed.roommateapp;
+package com.roboshed.roommateapp.ui;
 
-import com.roboshed.roommateapp.ui.BillActivity;
+import com.roboshed.roommateapp.R;
+import com.roboshed.roommateapp.R.id;
+import com.roboshed.roommateapp.R.layout;
+import com.roboshed.roommateapp.R.menu;
+import com.roboshed.roommateapp.network.NetworkClient;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -38,5 +44,34 @@ public class MainActivity extends Activity {
 				startActivity(intent);
 			}
 		});
+		
+		Button getToken = (Button) findViewById(R.id.getToken);
+		getToken.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				GetTokenTask task = new GetTokenTask(getApplicationContext());
+				task.execute();
+			}
+		});
+	}
+	
+	private class GetTokenTask extends AsyncTask<String, Integer, String>
+	{
+		private Context context;
+		
+		public GetTokenTask(Context context)
+		{
+			this.context = context.getApplicationContext();
+			
+		}
+		@Override
+		protected String doInBackground(String... params) 
+		{
+			NetworkClient client = NetworkClient.getInstance(getApplicationContext());
+			
+			client.auth("crobicha@gmail.com");
+			
+			return null;
+		}
 	}
 }

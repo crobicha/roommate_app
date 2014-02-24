@@ -21,6 +21,8 @@
 
     <uses-sdk android:minSdkVersion="9" android:targetSdkVersion="14" />
 
+	<uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+	
     <!-- So that we can get the account name -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
