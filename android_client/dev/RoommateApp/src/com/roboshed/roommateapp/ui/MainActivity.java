@@ -71,6 +71,8 @@ public class MainActivity extends Activity {
 			
 			client.auth("crobicha@gmail.com");
 			
+			client.getUserData();
+			
 			return null;
 		}
 	}
