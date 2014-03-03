@@ -1,0 +1,1 @@
+To test, visit http://dev-roommate.roboshed.com/common/hello
