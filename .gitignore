@@ -213,3 +213,6 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+android_client/dev/PlusSampleActivity/gen/com/google/android/gms/samples/plus/R.java
+android_client/dev/RoommateApp/gen/com/google/android/gms/R.java
+android_client/dev/RoommateApp/gen/com/roboshed/roommateapp/R.java

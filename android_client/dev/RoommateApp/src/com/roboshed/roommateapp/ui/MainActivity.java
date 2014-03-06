@@ -15,6 +15,8 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -53,6 +55,18 @@ public class MainActivity extends Activity {
 				task.execute();
 			}
 		});
+		
+		Button createUser = (Button) findViewById(R.id.createUser);
+		createUser.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				String email = ((EditText) findViewById(R.id.userEmail)).getText().toString();
+				String displayName = ((EditText) findViewById(R.id.userDisplayName)).getText().toString();
+				
+				CreateUserTask createUserTask = new CreateUserTask(getApplicationContext(), email, displayName);
+				createUserTask.execute();
+			}
+		});
 	}
 	
 	private class GetTokenTask extends AsyncTask<String, Integer, String>
@@ -72,6 +86,29 @@ public class MainActivity extends Activity {
 			client.auth("crobicha@gmail.com");
 			
 			client.getUserData();
+			
+			return null;
+		}
+	}
+	
+	private class CreateUserTask extends AsyncTask<String, Integer, String>
+	{
+		private Context context;
+		private String email;
+		private String displayName;
+		
+		public CreateUserTask(Context context, String email, String displayName)
+		{
+			this.context = context.getApplicationContext();
+			this.email = email;
+			this.displayName = displayName;
+		}
+		@Override
+		protected String doInBackground(String... params) 
+		{
+			NetworkClient client = NetworkClient.getInstance(getApplicationContext());
+			
+			client.createUser(email, displayName);
 			
 			return null;
 		}
