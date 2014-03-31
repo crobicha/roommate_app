@@ -10,6 +10,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpRequestBase;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
@@ -21,6 +22,7 @@ import android.view.textservice.TextInfo;
 
 import com.google.android.gms.auth.GoogleAuthUtil;
 import com.roboshed.roommateapp.data.UserData;
+import com.roboshed.roommateapp.util.Session;
 
 public class NetworkClient 
 {
@@ -32,9 +34,7 @@ public class NetworkClient
 	// TODO: Change this to https
 	private final String serverUrl = "http://dev-roommate.roboshed.com/";
 	
-	/*
-	 * api.roommates.roboshed.com
-	 */
+	private HttpClient httpClient = null;
 	
 	private static NetworkClient instance = null;
 	
@@ -55,11 +55,14 @@ public class NetworkClient
 		return instance;
 	}
 	
-	public String auth(String accountName)
+	public String auth()
 	{
+		String username = Session.getUsername(context);
+		Log.d(TAG, "auth with user: " + username);
+		
 		try
 		{
-			token = GoogleAuthUtil.getToken(context, accountName, scope);
+			token = GoogleAuthUtil.getToken(context, username, scope);
 			
 			Log.d(TAG, "Google auth token = " + token);
 			
@@ -87,7 +90,7 @@ public class NetworkClient
 	        post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 	        // Execute HTTP Post Request
-	        HttpResponse response = httpclient.execute(post);
+	        HttpResponse response = sendRequest(post);
 	        
 		    Log.i(TAG, "Response status = " + response.getStatusLine());
 		    Log.i(TAG, "Response = " + response);
@@ -122,7 +125,7 @@ public class NetworkClient
 			post.setEntity(new UrlEncodedFormEntity(params));
 			
 			// Execute HTTP Post Request
-	        HttpResponse response = httpclient.execute(post);
+	        HttpResponse response = sendRequest(post);
 	        
 		    Log.i(TAG, "Response status = " + response.getStatusLine());
 		    Log.i(TAG, "Response = " + response);
@@ -132,4 +135,32 @@ public class NetworkClient
 		}
 		
 	}
+	
+//	private HttpClient getHttpClient()
+//	{
+//		if(httpClient == null)
+//			httpClient = new DefaultHttpClient();
+//		
+//		return httpClient;
+//	}
+	
+	private HttpResponse sendRequest(HttpRequestBase request)
+	{
+		if(httpClient == null)
+			httpClient = new DefaultHttpClient();
+		
+		if(token == null)
+			auth();
+		
+		try {
+			return httpClient.execute(request);
+		}
+		catch(Exception e) {
+			Log.e(TAG, "Error sending request", e);
+		}
+		
+		return null;
+	}
+	
+	
 }

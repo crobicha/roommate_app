@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
 		{
 			NetworkClient client = NetworkClient.getInstance(getApplicationContext());
 			
-			client.auth("crobicha@gmail.com");
+//			client.auth("crobicha@gmail.com");
 			
 			client.getUserData();
 			
