@@ -34,9 +34,9 @@
         android:hint="Display Name"/>
     
     <Button
-        android:id="@+id/createUser"
+        android:id="@+id/userSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create User" />
+        android:text="User Settings" />
 
 </LinearLayout>

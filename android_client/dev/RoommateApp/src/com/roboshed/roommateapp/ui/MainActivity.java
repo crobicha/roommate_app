@@ -56,15 +56,18 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		Button createUser = (Button) findViewById(R.id.createUser);
-		createUser.setOnClickListener(new OnClickListener() {
+		Button userSettings = (Button) findViewById(R.id.userSettings);
+		userSettings.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				String email = ((EditText) findViewById(R.id.userEmail)).getText().toString();
-				String displayName = ((EditText) findViewById(R.id.userDisplayName)).getText().toString();
+//				String email = ((EditText) findViewById(R.id.userEmail)).getText().toString();
+//				String displayName = ((EditText) findViewById(R.id.userDisplayName)).getText().toString();
+//				
+//				CreateUserTask createUserTask = new CreateUserTask(getApplicationContext(), email, displayName);
+//				createUserTask.execute();
 				
-				CreateUserTask createUserTask = new CreateUserTask(getApplicationContext(), email, displayName);
-				createUserTask.execute();
+				Intent intent = new Intent(getApplicationContext(), UserDataActivity.class);
+				startActivity(intent);
 			}
 		});
 	}
