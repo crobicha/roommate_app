@@ -2,6 +2,7 @@ package com.roboshed.roommateapp.ui;
 
 import com.roboshed.roommateapp.R;
 import com.roboshed.roommateapp.data.UserData;
+import com.roboshed.roommateapp.util.Session;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,7 +25,8 @@ public class UserDataActivity extends Activity
 		
 		setContentView(R.layout.user_data);
 		
-		userData = new UserData(getApplicationContext());
+		Session session = new Session(getApplicationContext());
+		userData = session.getUserData();
 		
 		TextView userName = (TextView) findViewById(R.id.userName);
 		userName.setText(userData.getUserName());

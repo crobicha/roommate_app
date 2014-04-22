@@ -3,12 +3,40 @@ package com.roboshed.roommateapp.util;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.roboshed.roommateapp.data.UserData;
+
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.content.Context;
 
 public class Session 
 {
+	private static Session instance;
+	public static Session getInstance(Context context)
+	{
+		if(instance == null)
+			instance = new Session(context);
+		
+		return instance;
+	}
+	
+	public Session(Context context)
+	{
+		userData = new UserData(context);
+	}
+	
+	private UserData userData;
+	
+	public UserData getUserData()
+	{
+		return userData;
+	}
+	
+	public void setUserData(UserData userData)
+	{
+		this.userData = userData;
+	}
+	
 	// source: https://stackoverflow.com/questions/2727029/how-can-i-get-the-google-username-on-android
 	public static String getUsername(Context context)
 	{

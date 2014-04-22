@@ -47,14 +47,14 @@ public class MainActivity extends Activity {
 			}
 		});
 		
-		Button getToken = (Button) findViewById(R.id.getToken);
-		getToken.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				GetTokenTask task = new GetTokenTask(getApplicationContext());
-				task.execute();
-			}
-		});
+//		Button getToken = (Button) findViewById(R.id.getToken);
+//		getToken.setOnClickListener(new OnClickListener() {
+//			@Override
+//			public void onClick(View v) {
+//				GetTokenTask task = new GetTokenTask(getApplicationContext());
+//				task.execute();
+//			}
+//		});
 		
 		Button userSettings = (Button) findViewById(R.id.userSettings);
 		userSettings.setOnClickListener(new OnClickListener() {

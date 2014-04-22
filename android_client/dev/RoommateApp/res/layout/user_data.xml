@@ -6,8 +6,12 @@
     
     <TextView android:id="@+id/userName"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="#ff0000"
-        android:textAlignment="center"/>
+        android:layout_height="30dp"/>
+    
+    <EditText 
+        android:id="@+id/userDisplayName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Display Name"/>
 
 </LinearLayout>

@@ -23,7 +23,7 @@ public class UserData
 
 	public int getUserId()
 	{
-        return sharedPref.getInt("userId" , -1);
+        return sharedPref.getInt("userId" , 1);
 	}
 	
 	public void setUserId(int userId)
@@ -34,7 +34,7 @@ public class UserData
 	
 	public String getUserName()
 	{
-		return sharedPref.getString("userId" , "error");
+		return sharedPref.getString("userId" , "crobicha@gmail.com");
 	}
 	
 	public void setUserName(String userName)

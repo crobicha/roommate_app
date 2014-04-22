@@ -15,23 +15,23 @@
         android:layout_width="wrap_content"
         android:text="@string/show_bills"/>
     
-    <Button 
-        android:id="@+id/getToken"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="Get Token"/>
+<!--     <Button  -->
+<!--         android:id="@+id/getToken" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_width="wrap_content" -->
+<!--         android:text="Get Token"/> -->
     
-    <EditText 
-        android:id="@+id/userEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Email"/>
+<!--     <EditText  -->
+<!--         android:id="@+id/userEmail" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:hint="Email"/> -->
     
-    <EditText 
-        android:id="@+id/userDisplayName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Display Name"/>
+<!--     <EditText  -->
+<!--         android:id="@+id/userDisplayName" -->
+<!--         android:layout_width="match_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:hint="Display Name"/> -->
     
     <Button
         android:id="@+id/userSettings"
